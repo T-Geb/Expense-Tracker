@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>About Expense Tracker</title>
+
+  <!--reference CSS file-->
+  <link rel="stylesheet"
+        type="text/css"
+        th:href="@{style.css}"/>
+
+
+</head>
+
+<body>
+<!--  <input type="hidden" name="id" th:value="${expenses.expense_id}" >
+ for updating add the hidden id-->
+<p>Add your expenses below</p>
+
+<br><br>
+<!--form to add new expense... utilizes a list of cateogry using select.... * to link to the entities....then posting it to the save method in the
+add expense controller. -->
+<form th:action="@{/saveExpense}" th:object="${expenses}" method="post">
+  <input type="text" name="expenseName" th:field="*{expenseName}" placeholder="Expense Name">
+  <select th:field="*{category}">
+    <option th:each="tempCategory : ${expenseCategory}"
+            th:value="${tempCategory}" th:text="${tempCategory}"/>
+  </select>
+  <input type="number" name="amount" th:field="*{amount}" placeholder="Expense Amount" step="any"> <!--step="0.01" so it accepts two decimals points..
+  or step="any" to accept any numbrer of decimals-->
+  <input type="submit" th:value="Submit">
+  <br><br>
+
+
+</form>
+
+
+</body>
+
+
+
+
+</html>

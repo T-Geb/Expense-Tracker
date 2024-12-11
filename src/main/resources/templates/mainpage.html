@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Expense Tracker</title>
+
+    <!--reference CSS file-->
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{style.css}"/>
+
+</head>
+
+<body>
+<div class="container">
+
+<h1>Welcome to Expense Tracker!</h1>
+<br><br>
+
+    <br><br>
+
+    <form th:action="@{/addExpenses}" method="get">
+        <input type="submit" value="Add Expenses">
+    </form>
+
+    <br><br>
+    <br><br>
+    <table class="table">  <!--only need to apply the css once in the table...style located in the style.css class-->
+        <thead>
+         <tr>
+             <th>Expense ID</th>
+             <th>Expense Name</th>
+             <th>Category</th>
+             <th>Amount</th>
+             <th>Date Added</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr th:each="expense: ${expenses}">
+             <td th:text="${expense.expense_id}"></td>  <!--These are mapped to the Entity attributes -->
+             <td th:text="${expense.expenseName}"></td>
+             <td th:text="${expense.category}"></td>
+             <td th:text="${expense.amount}"></td>
+             <td th:text="${expense.date}"></td>
+             <td>
+                     <a th:href="@{/deleteExpense(expense_id=${expense.expense_id})}">Delete</a> </td>
+         </tr>
+        </tbody>
+    </table>
+
+
+<br><br> <!--Adding two line breaks-->
+
+<table>
+
+</table>
+
+</div>
+
+<div>
+    <h3>Total Expense:$<span th:text="${totalExpenses} "></span> </h3>
+</div>
+
+</body>
+
+
+
+
+</html>

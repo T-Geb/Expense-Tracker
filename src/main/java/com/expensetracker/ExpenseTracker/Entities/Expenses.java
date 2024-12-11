@@ -2,6 +2,7 @@ package com.expensetracker.ExpenseTracker.Entities;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
@@ -13,7 +14,7 @@ public class Expenses {
     /*Integer better than int in Hibernate as it allows null values. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer expense_id;  // this id has to match the database name or renamed with @Column annotation
 
     @Column(name = "expense_name", nullable = false)
     private String expenseName;
@@ -24,16 +25,17 @@ public class Expenses {
     @Column(name = "amount")
     private double amount;
 
+    @CreationTimestamp
     @Column(name = "date_of")
     private Date date;
 
     /*Setter and Getters*/
-    public int getId() {
-        return id;
+    public int getExpense_id() {
+        return expense_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setExpense_id(int expense_id) {
+        this.expense_id = expense_id;
     }
 
     public String getExpenseName() {
