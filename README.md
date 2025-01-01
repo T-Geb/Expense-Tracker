@@ -1,9 +1,18 @@
 # Expense Tracker
 
 ## Description
-This is a Spring Boot application for tracking personal expenses.
+A simple Spring Boot application for tracking personal expenses. Users can add, view, and delete expenses, categorized dynamically.
 
-## Components
-- **Entity**: Created `Expenses.java` mapped to the database table.
-- **Repository**: Added `ExpensesRepository.java` for database interactions.
-- **Service**: Implemented `ExpenseService.java` to handle business logic.
+---
+
+## Features
+- Add expenses with a name, category, and amount.
+- View a summary table of expenses and total amount.
+- Delete individual expenses.
+
+---
+
+## Future Improvements
+- Edit expense details.
+- Implement filtering or sorting for expenses
+- Display charts for expenses.
